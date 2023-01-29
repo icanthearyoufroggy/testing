@@ -1,0 +1,618 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ChatLogger = Instance.new("ScreenGui")
+local Wrapper = Instance.new("Frame")
+local ResizePreview = Instance.new("ImageLabel")
+local MinButton = Instance.new("TextLabel")
+local XButton = Instance.new("TextLabel")
+local Title = Instance.new("TextLabel")
+local ResizeBtn = Instance.new("Frame")
+local Title_2 = Instance.new("Frame")
+local TextHolderTemplate = Instance.new("Frame")
+local Input = Instance.new("TextBox")
+local Location = Instance.new("TextBox")
+local AllText = Instance.new("TextLabel")
+local AdminBox = Instance.new("Frame")
+local ScrollingFrame = Instance.new("Frame")
+local UIListLayout = Instance.new("UIListLayout")
+local ScrollingBar = Instance.new("Frame")
+local ScrollingBackground = Instance.new("Frame")
+local TextBoxTemplate = Instance.new("TextBox")
+
+--Properties:
+
+ChatLogger.Name = "ChatLogger"
+ChatLogger.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ChatLogger.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Wrapper.Name = "Wrapper"
+Wrapper.Parent = ChatLogger
+Wrapper.BackgroundColor3 = Color3.fromRGB(88, 88, 88)
+Wrapper.BorderColor3 = Color3.fromRGB(150, 130, 110)
+Wrapper.BorderSizePixel = 0
+Wrapper.Draggable = true
+Wrapper.Position = UDim2.new(0, 521, 0, 214)
+Wrapper.Size = UDim2.new(0, 300, 0, 200)
+
+ResizePreview.Name = "ResizePreview"
+ResizePreview.Parent = Wrapper
+ResizePreview.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ResizePreview.BackgroundTransparency = 1.000
+ResizePreview.Size = UDim2.new(1, 0, 1, 0)
+ResizePreview.Visible = false
+ResizePreview.ZIndex = 566
+ResizePreview.Image = "http://www.roblox.com/asset/?id=5223703102"
+ResizePreview.ScaleType = Enum.ScaleType.Slice
+ResizePreview.SliceCenter = Rect.new(52, 56, 962, 968)
+ResizePreview.SliceScale = 0.050
+
+MinButton.Name = "MinButton"
+MinButton.Parent = Wrapper
+MinButton.AnchorPoint = Vector2.new(1, 0)
+MinButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+MinButton.BackgroundTransparency = 1.000
+MinButton.BorderSizePixel = 0
+MinButton.Position = UDim2.new(1, -20, 0, 0)
+MinButton.Size = UDim2.new(0, 20, 0, 15)
+MinButton.Font = Enum.Font.Unknown
+MinButton.Text = "-"
+MinButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+MinButton.TextScaled = true
+MinButton.TextWrapped = true
+
+XButton.Name = "XButton"
+XButton.Parent = Wrapper
+XButton.AnchorPoint = Vector2.new(1, 0)
+XButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+XButton.BackgroundTransparency = 1.000
+XButton.BorderSizePixel = 0
+XButton.Position = UDim2.new(1, 0, 0, 0)
+XButton.Size = UDim2.new(0, 20, 0, 15)
+XButton.Font = Enum.Font.Unknown
+XButton.Text = "X"
+XButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+XButton.TextScaled = true
+XButton.TextSize = 6.000
+XButton.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+XButton.TextWrapped = true
+
+Title.Name = "Title"
+Title.Parent = Wrapper
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.Position = UDim2.new(0, 1, 0, 1)
+Title.Size = UDim2.new(1.05999994, -50, 0, 15)
+Title.Font = Enum.Font.Unknown
+Title.Text = "chatlogger.exe"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 13.000
+Title.TextWrapped = true
+Title.TextXAlignment = Enum.TextXAlignment.Left
+Title.TextYAlignment = Enum.TextYAlignment.Top
+
+ResizeBtn.Name = "ResizeBtn"
+ResizeBtn.Parent = Wrapper
+ResizeBtn.AnchorPoint = Vector2.new(1, 1)
+ResizeBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ResizeBtn.BackgroundTransparency = 0.900
+ResizeBtn.BorderColor3 = Color3.fromRGB(150, 130, 110)
+ResizeBtn.BorderSizePixel = 0
+ResizeBtn.Position = UDim2.new(1, 0, 1, 0)
+ResizeBtn.Size = UDim2.new(0, 8, 0, 8)
+ResizeBtn.ZIndex = 2
+
+Title_2.Name = "Title"
+Title_2.Parent = Wrapper
+Title_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title_2.BackgroundTransparency = 1.000
+Title_2.Size = UDim2.new(1, 0, 0, 15)
+
+TextHolderTemplate.Name = "TextHolderTemplate"
+TextHolderTemplate.Parent = Wrapper
+TextHolderTemplate.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextHolderTemplate.BackgroundTransparency = 1.000
+TextHolderTemplate.Size = UDim2.new(1, 0, 0, 12)
+TextHolderTemplate.Visible = false
+
+Input.Name = "Input"
+Input.Parent = TextHolderTemplate
+Input.Active = false
+Input.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Input.BackgroundTransparency = 1.000
+Input.Position = UDim2.new(0, 156, 0, 0)
+Input.Size = UDim2.new(1, -156, 1, 0)
+Input.ZIndex = 3
+Input.ClearTextOnFocus = false
+Input.Font = Enum.Font.RobotoMono
+Input.Text = ""
+Input.TextColor3 = Color3.fromRGB(239, 255, 89)
+Input.TextScaled = true
+Input.TextSize = 12.000
+Input.TextWrapped = true
+Input.TextXAlignment = Enum.TextXAlignment.Left
+Input.TextYAlignment = Enum.TextYAlignment.Top
+
+Location.Name = "Location"
+Location.Parent = TextHolderTemplate
+Location.Active = false
+Location.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Location.BackgroundTransparency = 1.000
+Location.Selectable = false
+Location.Size = UDim2.new(0, 0, 1, 0)
+Location.ClearTextOnFocus = false
+Location.Font = Enum.Font.RobotoMono
+Location.Text = "PS C:\\Users\\LocalPlayer>"
+Location.TextColor3 = Color3.fromRGB(255, 255, 255)
+Location.TextScaled = true
+Location.TextSize = 12.000
+Location.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+Location.TextWrapped = true
+Location.TextXAlignment = Enum.TextXAlignment.Left
+Location.TextYAlignment = Enum.TextYAlignment.Top
+
+AllText.Name = "AllText"
+AllText.Parent = TextHolderTemplate
+AllText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+AllText.BackgroundTransparency = 1.000
+AllText.Size = UDim2.new(1, 0, 0, 12)
+AllText.Font = Enum.Font.SourceSans
+AllText.TextColor3 = Color3.fromRGB(0, 0, 0)
+AllText.TextScaled = true
+AllText.TextSize = 14.000
+AllText.TextTransparency = 1.000
+AllText.TextWrapped = true
+
+AdminBox.Name = "AdminBox"
+AdminBox.Parent = Wrapper
+AdminBox.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
+AdminBox.BorderColor3 = Color3.fromRGB(150, 130, 110)
+AdminBox.BorderSizePixel = 0
+AdminBox.ClipsDescendants = true
+AdminBox.Position = UDim2.new(0, 0, 0, 15)
+AdminBox.Size = UDim2.new(1, 0, 1, -15)
+
+ScrollingFrame.Name = "ScrollingFrame"
+ScrollingFrame.Parent = AdminBox
+ScrollingFrame.Active = true
+ScrollingFrame.BackgroundColor3 = Color3.fromRGB(22, 24, 33)
+ScrollingFrame.ClipsDescendants = true
+ScrollingFrame.Size = UDim2.new(1, -8, 0, 620)
+ScrollingFrame.ZIndex = 0
+
+UIListLayout.Parent = ScrollingFrame
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+ScrollingBar.Name = "ScrollingBar"
+ScrollingBar.Parent = AdminBox
+ScrollingBar.AnchorPoint = Vector2.new(1, 0)
+ScrollingBar.BackgroundColor3 = Color3.fromRGB(118, 118, 118)
+ScrollingBar.BorderSizePixel = 0
+ScrollingBar.Position = UDim2.new(1, 0, 0.300000012, 0)
+ScrollingBar.Size = UDim2.new(0, 8, 0.699999988, 0)
+ScrollingBar.ZIndex = 3
+
+ScrollingBackground.Name = "ScrollingBackground"
+ScrollingBackground.Parent = AdminBox
+ScrollingBackground.AnchorPoint = Vector2.new(1, 0)
+ScrollingBackground.BackgroundColor3 = Color3.fromRGB(38, 38, 38)
+ScrollingBackground.BorderSizePixel = 0
+ScrollingBackground.Position = UDim2.new(1, 0, 0, 0)
+ScrollingBackground.Size = UDim2.new(0, 8, 1, 0)
+
+TextBoxTemplate.Name = "TextBoxTemplate"
+TextBoxTemplate.Parent = Wrapper
+TextBoxTemplate.Active = false
+TextBoxTemplate.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextBoxTemplate.BackgroundTransparency = 1.000
+TextBoxTemplate.Selectable = false
+TextBoxTemplate.Size = UDim2.new(1, 0, 0, 12)
+TextBoxTemplate.Visible = false
+TextBoxTemplate.ClearTextOnFocus = false
+TextBoxTemplate.Font = Enum.Font.RobotoMono
+TextBoxTemplate.Text = "Text"
+TextBoxTemplate.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBoxTemplate.TextSize = 12.000
+TextBoxTemplate.TextWrapped = true
+TextBoxTemplate.TextXAlignment = Enum.TextXAlignment.Left
+TextBoxTemplate.TextYAlignment = Enum.TextYAlignment.Top
+
+-- Scripts:
+
+local function PNARQ_fake_script() -- Wrapper.Resize 
+	local script = Instance.new('LocalScript', Wrapper)
+
+	local uip = game:GetService("UserInputService")
+	local ts = game:GetService("TweenService")
+	local player = game:GetService("Players").LocalPlayer
+	local mouse = player:GetMouse()
+	
+	local wrapper = script.Parent
+	local ui = wrapper.Parent
+	local title = wrapper:FindFirstChild("Title")
+	local adminbox = wrapper:FindFirstChild("AdminBox")
+	local resizebtn = wrapper:FindFirstChild("ResizeBtn")
+	local resizepreview = wrapper:FindFirstChild("ResizePreview")
+	
+	local hoveringResize = false
+	local customMouseConnection
+	local hoveringWholeGui = false
+	
+	-- coloring for X buttons
+	local xbutton = script.Parent:FindFirstChild("XButton")
+	local minbutton = script.Parent:FindFirstChild("MinButton")
+	
+	local minimizeConnection
+	local minimized = false
+	local closeConnection
+	
+	xbutton.MouseEnter:Connect(function()
+		local tween = ts:Create(xbutton,TweenInfo.new(.1,Enum.EasingStyle.Sine,Enum.EasingDirection.In),{BackgroundTransparency = 0.2})
+		tween:Play()
+		hoveringWholeGui = false
+		closeConnection = uip.InputBegan:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 then
+				ui:Destroy()
+			end
+		end)
+	end)
+	xbutton.MouseLeave:Connect(function()
+		local tween = ts:Create(xbutton,TweenInfo.new(.2,Enum.EasingStyle.Sine,Enum.EasingDirection.In), {BackgroundTransparency = 1})
+		tween:Play()
+		closeConnection:Disconnect()
+	end)
+	
+	local originalWrapperSize = wrapper.Size
+	
+	minbutton.MouseEnter:Connect(function()
+		local tween = ts:Create(minbutton,TweenInfo.new(.1,Enum.EasingStyle.Sine,Enum.EasingDirection.In), {BackgroundTransparency = 0.8})
+		tween:Play()
+		hoveringWholeGui = false
+		minimizeConnection = uip.InputBegan:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 then
+				if not minimized then
+					wrapper.Size = UDim2.new(wrapper.Size.X.Scale,wrapper.Size.X.Offset,0,15)
+				else
+					wrapper.Size = originalWrapperSize
+					originalWrapperSize = wrapper.Size
+				end
+				minimized = not minimized
+			end
+		end)
+	end)
+	minbutton.MouseLeave:Connect(function()
+		local tween = ts:Create(minbutton,TweenInfo.new(.2,Enum.EasingStyle.Sine,Enum.EasingDirection.In), {BackgroundTransparency = 1})
+		tween:Play()
+		minimizeConnection:Disconnect()
+	end)
+	
+	resizebtn.MouseEnter:Connect(function()
+		hoveringResize = true
+	end)
+	
+	resizebtn.MouseLeave:Connect(function()
+		hoveringResize = false
+	end)
+	
+	
+	title.MouseEnter:Connect(function()
+		hoveringWholeGui = true
+	end)
+	title.MouseLeave:Connect(function()
+		hoveringWholeGui = false
+	end)
+	
+	local resizeconnection
+	local moveGuiConnection
+	
+	uip.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then
+			if hoveringResize then
+				resizepreview.Visible = true
+				resizepreview.Size = UDim2.new(0,mouse.X - resizepreview.Position.X.Offset,0,mouse.Y - resizepreview.Position.Y.Offset)
+				resizeconnection = game:GetService("RunService").RenderStepped:Connect(function()
+					local xdifference = mouse.X - wrapper.Position.X.Offset + 5
+					local ydifference = mouse.Y - wrapper.Position.Y.Offset + 5
+					
+					
+					if xdifference > 100 then
+						resizepreview.Size = UDim2.new(resizepreview.Size.X.Scale,xdifference,resizepreview.Size.Y.Scale,resizepreview.Size.Y.Offset)
+					else
+						resizepreview.Size = UDim2.new(resizepreview.Size.X.Scale,100,resizepreview.Size.Y.Scale,resizepreview.Size.Y.Offset)
+					end
+					
+					if ydifference > 100 then
+						resizepreview.Size = UDim2.new(resizepreview.Size.X.Scale,resizepreview.Size.X.Offset,resizepreview.Size.Y.Scale,ydifference)
+					else
+						resizepreview.Size = UDim2.new(resizepreview.Size.X.Scale,resizepreview.Size.X.Offset,resizepreview.Size.Y.Scale,100)
+					end
+					
+				end)
+			elseif hoveringWholeGui then
+				resizepreview.Visible = true
+				resizepreview.Size = wrapper.Size
+				
+				local startXOffset = mouse.X - wrapper.Position.X.Offset
+				local startYOffset = mouse.Y - wrapper.Position.Y.Offset
+				
+				moveGuiConnection = game:GetService("RunService").RenderStepped:Connect(function()
+					local xdifference = mouse.X - wrapper.Position.X.Offset - startXOffset
+					local ydifference = mouse.Y - wrapper.Position.Y.Offset - startYOffset
+					
+					resizepreview.Position = UDim2.new(resizepreview.Position.X.Scale, xdifference, resizepreview.Position.Y.Scale, ydifference)
+				end)
+			end
+		end
+	end)
+	
+	uip.InputEnded:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then
+			if resizeconnection then
+				resizeconnection:Disconnect()
+				resizeconnection = nil
+				resizepreview.Visible = false
+				
+				wrapper.Size = resizepreview.Size
+				if mouse.X - resizebtn.AbsolutePosition.X > 0 and mouse.X - resizebtn.AbsolutePosition.X < resizebtn.AbsoluteSize.X and mouse.Y - resizebtn.AbsolutePosition.Y > 0 and mouse.Y - resizebtn.AbsolutePosition.Y < resizebtn.AbsoluteSize.Y then
+					hoveringResize = true
+				end
+			elseif moveGuiConnection then
+				moveGuiConnection:Disconnect()
+				moveGuiConnection = nil
+				resizepreview.Visible = false
+				
+				wrapper.Position = UDim2.new(0, resizepreview.AbsolutePosition.X, 0, resizepreview.AbsolutePosition.Y)
+				if mouse.X - title.AbsolutePosition.X > 0 and mouse.X - title.AbsolutePosition.X < title.AbsoluteSize.X and mouse.Y - title.AbsolutePosition.Y > 0 and mouse.X - title.AbsolutePosition.Y < title.AbsoluteSize.Y then
+					hoveringWholeGui = false
+				end
+				resizepreview.Position = UDim2.new(0,0,0,0)
+				resizepreview.Size = UDim2.new(1,0,1,0)
+			end
+		end
+	end)
+end
+coroutine.wrap(PNARQ_fake_script)()
+local function LTLPZW_fake_script() -- AdminBox.TextBoxHandler 
+	local script = Instance.new('LocalScript', AdminBox)
+
+	local textservice = game:GetService("TextService")
+	local uip = game:GetService("UserInputService")
+	local adminbox = script.Parent
+	local wrapper = adminbox.Parent
+	local textwrapper = adminbox:FindFirstChild("ScrollingFrame")
+	local TextBoxTemplate = wrapper:FindFirstChild("TextBoxTemplate")
+	local TextHolderTemplate = wrapper:FindFirstChild("TextHolderTemplate")
+	
+	--<CUSTOM SCROLLING FRAME>--
+	
+	local uilist = textwrapper:FindFirstChild("UIListLayout")
+	local scrollingbar = adminbox:FindFirstChild("ScrollingBar")
+	scrollingbar.Size = UDim2.new(0,8,adminbox.AbsoluteSize.Y/textwrapper.AbsoluteSize.Y,0)
+	
+	local hoveringOverGui = false
+	adminbox.MouseEnter:Connect(function()
+		hoveringOverGui = true
+	end)
+	adminbox.MouseLeave:Connect(function()
+		hoveringOverGui = false
+	end)
+	
+	-- resize scrolling frame for content amount
+	
+	uilist:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+		local minimumSize = adminbox.AbsoluteSize.Y
+		local desiredSize = uilist.AbsoluteContentSize.Y
+		
+		if desiredSize < minimumSize then
+			textwrapper.Size = UDim2.new(1,-8,0,minimumSize)
+		else
+			textwrapper.Size = UDim2.new(1,-8,0,desiredSize)
+		end
+		textwrapper.Position = UDim2.new(0,0,0,-textwrapper.AbsoluteSize.Y + adminbox.AbsoluteSize.Y)
+		scrollingbar.Size = UDim2.new(0,8,adminbox.AbsoluteSize.Y/textwrapper.AbsoluteSize.Y,0)
+		scrollingbar.Position = UDim2.new(1,0,1-scrollingbar.Size.Y.Scale,0)
+	end)
+	
+	-- scrolling mechanic
+	
+	uip.InputChanged:Connect(function(input)
+		if not hoveringOverGui then return end
+		if input.UserInputType == Enum.UserInputType.MouseWheel then
+			local scrollAmount = 24
+			
+			local lowestScrollConstraint = -textwrapper.AbsoluteSize.Y + adminbox.AbsoluteSize.Y
+			local highestScrollConstraint = 0
+			
+			local barYMaxConstraint = 0
+			local barYMinConstraint = (1-scrollingbar.Size.Y.Scale)
+			
+			if input.Position.Z > 0 then
+				-- mouse wheel up
+				textwrapper.Position = UDim2.new(0,0,0,textwrapper.Position.Y.Offset + scrollAmount)
+				if textwrapper.Position.Y.Offset > highestScrollConstraint then
+					textwrapper.Position = UDim2.new(0,0,0,0)
+					scrollingbar.Position = UDim2.new(1,0,0,0)
+				end
+	
+				if textwrapper.AbsoluteSize.Y == adminbox.AbsoluteSize.Y then
+					scrollingbar.Size = UDim2.new(0,8,1,0)
+					scrollingbar.Position = UDim2.new(1,0,0,0)
+				else
+					local scrollerCanvasPosition = textwrapper.Position.Y.Offset / lowestScrollConstraint -- should be a scale (from 0-1)
+					local barCanvasPosition = scrollerCanvasPosition * barYMinConstraint
+					scrollingbar.Position = UDim2.new(1,0,barCanvasPosition,0)
+				end
+			
+			else
+				-- mouse wheel down
+				textwrapper.Position = UDim2.new(0,0,0,textwrapper.Position.Y.Offset - scrollAmount)
+				if textwrapper.Position.Y.Offset < lowestScrollConstraint then
+					textwrapper.Position = UDim2.new(0,0,0,lowestScrollConstraint)
+					scrollingbar.Position = UDim2.new(1,0,barYMinConstraint,0)
+				end
+				
+				if textwrapper.AbsoluteSize.Y == adminbox.AbsoluteSize.Y then
+					scrollingbar.Size = UDim2.new(0,8,1,0)
+					scrollingbar.Position = UDim2.new(1,0,0,0)
+				else
+					local scrollerCanvasPosition = textwrapper.Position.Y.Offset / lowestScrollConstraint -- should be a scale (from 0-1)
+					local barCanvasPosition = scrollerCanvasPosition * barYMinConstraint
+					scrollingbar.Position = UDim2.new(1,0,barCanvasPosition,0)
+				end
+	
+			end
+		end
+	end)
+	
+	-- resize scrolling frame on admin box size change
+	adminbox:GetPropertyChangedSignal("Size"):Connect(function()
+		textwrapper.Position = UDim2.new(0,0,0,-textwrapper.AbsoluteSize.Y + adminbox.AbsoluteSize.Y)
+		scrollingbar.Size = UDim2.new(0,8,adminbox.AbsoluteSize.Y/textwrapper.AbsoluteSize.Y,0)
+	end)
+	
+	--</>
+	
+	--<RESIZE TEXT BOXES>--
+	
+	local function resizeTextObject(newObject)
+		if newObject:IsA("TextLabel") then -- return text; one time change
+			local firstSize = textservice:GetTextSize(newObject.Text,12,Enum.Font.RobotoMono,Vector2.new(adminbox.AbsoluteSize.X,adminbox.AbsoluteSize.Y))
+			newObject.Size = UDim2.new(1,0,0,firstSize.Y)
+			
+			newObject.Size = UDim2.new(1,0,0,newObject.TextBounds.Y)
+			wrapper:GetPropertyChangedSignal("Size"):Connect(function()
+				local newSize = textservice:GetTextSize(newObject.Text,12,Enum.Font.RobotoMono,Vector2.new(adminbox.AbsoluteSize.X,adminbox.AbsoluteSize.Y))
+				newObject.Size = UDim2.new(1,0,0,newSize.Y)
+			end)
+		elseif newObject:IsA("TextBox") then -- return text; one time change / text change
+			local firstSize = textservice:GetTextSize(newObject.Text,12,Enum.Font.RobotoMono,Vector2.new(adminbox.AbsoluteSize.X,adminbox.AbsoluteSize.Y))
+			newObject.Size = UDim2.new(1,0,0,firstSize.Y)
+			
+			newObject:GetPropertyChangedSignal("Text"):Connect(function()
+				local newSize = textservice:GetTextSize(newObject.Text,12,Enum.Font.RobotoMono,Vector2.new(adminbox.AbsoluteSize.X,adminbox.AbsoluteSize.Y))
+				newObject.Size = UDim2.new(1,0,0,newSize.Y)
+			end)
+	
+			wrapper:GetPropertyChangedSignal("Size"):Connect(function()
+				local newSize = textservice:GetTextSize(newObject.Text,12,Enum.Font.RobotoMono,Vector2.new(adminbox.AbsoluteSize.X,adminbox.AbsoluteSize.Y))
+				newObject.Size = UDim2.new(1,0,0,newSize.Y)
+			end)
+		elseif newObject:IsA("Frame") and newObject.Name == "TextHolder" then -- for input object; change size w/ whichever is greater
+			local input = newObject:FindFirstChild("Input")
+			local title = newObject:FindFirstChild("Location")
+			local allText = newObject:FindFirstChild("AllText")
+			
+			local firstSize = textservice:GetTextSize(allText.Text,12,Enum.Font.RobotoMono,Vector2.new(adminbox.AbsoluteSize.X,adminbox.AbsoluteSize.Y))
+			newObject.Size = UDim2.new(1,0,0,firstSize.Y)
+	
+			input:GetPropertyChangedSignal("Text"):Connect(function()
+				local newSize = textservice:GetTextSize(allText.Text,12,Enum.Font.RobotoMono,Vector2.new(adminbox.AbsoluteSize.X,adminbox.AbsoluteSize.Y))
+				newObject.Size = UDim2.new(1,0,0,newSize.Y)
+			end)
+	
+			wrapper:GetPropertyChangedSignal("Size"):Connect(function()
+				local newSize = textservice:GetTextSize(allText.Text,12,Enum.Font.RobotoMono,Vector2.new(adminbox.AbsoluteSize.X,adminbox.AbsoluteSize.Y))
+				newObject.Size = UDim2.new(1,0,0,newSize.Y)
+			end)
+		end
+	end
+	
+	textwrapper.ChildAdded:Connect(resizeTextObject)
+	
+	--</>--
+	
+	--<TEXT OUTPUT FUNCTIONALITY>--
+	
+	local responseCounter = 1
+	local inputCounter = 1
+	local latestInputBox
+	
+	local textColor = Color3.fromRGB(242,242,242)
+	local inputColor = Color3.fromRGB(242,242,242)
+	
+	local function getLatestInput()
+		local inputBoxes = {}
+		local latestInput = 0
+	
+		for _,v in pairs(textwrapper:GetChildren()) do
+			if string.match(v.Name, "Input") then
+				inputBoxes[string.sub(v.Name,1,1)] = v
+			end
+		end
+	
+		for i,v in pairs(inputBoxes) do
+			if tonumber(i) > tonumber(latestInput) then
+				latestInput = i
+			end
+		end
+	
+		return inputBoxes[latestInput]
+	end
+	
+	local function createResponse(text:string, color:Color3)
+		local newResponse = TextBoxTemplate:Clone()
+		newResponse.Name = responseCounter.."Response"
+		responseCounter += 1
+		newResponse.Text = text or "Unknown error"
+		newResponse.Visible = true
+		newResponse.Parent = textwrapper
+		if not color then
+			newResponse.TextColor3 = textColor
+		else
+			newResponse.TextColor3 = color
+		end
+	end
+	
+	local function createNewInput(nameText,messageText,color)
+		local newInput = TextHolderTemplate:Clone()
+		local location = newInput:FindFirstChild("Location")
+		local input = newInput:FindFirstChild("Input")
+		local alltext = newInput:FindFirstChild("AllText")
+		
+		location.TextColor3 = textColor
+		input.TextColor3 = inputColor or color
+		
+		newInput.Name = inputCounter.."Input"
+		inputCounter += 1
+		
+		location.Text = nameText
+		input.Text = messageText
+		alltext.Text = location.Text.." "..input.Text
+		
+		newInput.Parent = textwrapper
+		
+		local wrappedTextSize = textservice:GetTextSize(alltext.Text,12,Enum.Font.RobotoMono,Vector2.new(adminbox.AbsoluteSize.X,adminbox.AbsoluteSize.Y))
+		
+		wait()
+		input.Position = UDim2.new(0,location.AbsoluteSize.X,0,0)
+		input.Size = UDim2.new(1,-location.AbsoluteSize.X,1,0)
+		newInput.Size = UDim2.new(1,0,0,wrappedTextSize.Y)
+		newInput.Visible = true
+		
+	end
+	
+	local function closeInput(input:Frame)
+		input:FindFirstChild("Input").TextEditable = false
+	end
+	
+	-- hook player chatted event
+	for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+		if v:IsA("Player") then
+			v.Chatted:Connect(function(message)
+				textColor = v.TeamColor.Color or Color3.new(1,1,1)
+				if v.Team == nil then
+					createNewInput("["..v.Name.."]: ",message)
+					local newInput2 = getLatestInput()
+					closeInput(newInput2)
+				else
+					createNewInput("["..v.Team.Name..": "..v.Name.."]: ",message,v.TeamColor.Color)
+					local newInput = getLatestInput()
+					closeInput(newInput)
+				end
+			end)
+		end
+	end
+end
+coroutine.wrap(LTLPZW_fake_script)()
